@@ -91,27 +91,27 @@ Libraries tend to give you a lot of "functions for free" to go with your instanc
 
 Unlike OO where inheritance happens on concrete data, Haskell's "inheritance" on interfaces is more like saying "assuming that you have an `x`, then you can also do `y`!" It lets you extend abstract interfaces with more functions. This usually makes for a smaller number of types that have the new interface, because they need the old type class, plus an instance for the new one, which is not always even possible!
 
-Let's extend that Semigroup to have an element that when used with `<>` is a no op. We'll call this `mzero`, because of how it works on integer addition \(0 + x = x\) and because the name `id` was already taken.
+Let's extend that Semigroup to have an element that when used with `<>` is a no op. We'll call this `mempty`, because of how it works on lists \(\[\] ++ xs = xs\) and because the name `id` was already taken.
 
 ```haskell
 class Semigroup a => Monoid a where
-  mzero :: a
+  mempty :: a
 ```
 
-By definition, a Monoid is assumed to have a Semigroup instance kicking around. It has both `mzero` and `<>` automatically available. Let's look at a few of these:
+By definition, a Monoid is assumed to have a Semigroup instance kicking around. It has both `mempty` and `<>` automatically available. Let's look at a few of these:
 
 ```haskell
 intance Monoid Int where
-  mzero = 0
+  mempty = 0
 
 instance Monoid [a] where
-  mzero = []
+  mempty = []
   
 instance Monoid Text where
-  mzero = ""
+  mempty = ""
   
 instance Monoid (-> a) where
-  mzero = id
+  mempty = id
 ```
 
 ## Functor Hierarchy
