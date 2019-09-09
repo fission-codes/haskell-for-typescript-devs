@@ -114,7 +114,7 @@ makeLenses ''Config
 Because of the `makeLenses` declaration, you automagically get a lens \(superpowered accessor\) for the new field called `port`
 {% endhint %}
 
-Finally, write a `Has` instance:
+Finally, write a [`Has` instance](https://www.stackage.org/haddock/lts-14.5/data-has-0.3.0.0/Data-Has.html):
 
 ```haskell
 instance Has Web.Port Config where
