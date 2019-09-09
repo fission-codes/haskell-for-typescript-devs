@@ -513,6 +513,12 @@ const myBike = new Bike(2, 5, '10 Speeder')
 
 {% tab title="Haskell" %}
 ```haskell
+myBike = Bike "10 Speeder" (GearRatio 2 5)
+```
+{% endtab %}
+
+{% tab title="Haskell \(Record Style\)" %}
+```haskell
 myBike = Bike
   { _name = "10 Speeder"  -- Use named fields
   , _gear = GearRatio 2 5 -- Or just ordered values
