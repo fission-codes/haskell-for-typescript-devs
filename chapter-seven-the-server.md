@@ -1,2 +1,0 @@
-# Chapter Seven: Composable Servers
-

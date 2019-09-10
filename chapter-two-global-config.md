@@ -1,4 +1,4 @@
-# Chapter Four: Ambient Config
+# Chapter Three: Ambient Config
 
 ## Why Ambient?
 
