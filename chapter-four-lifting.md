@@ -42,12 +42,16 @@ Haskell doesn't expose the `IO` constructor \(i.e. it's not exported, something 
 This example uses an `IO`-enabled wrapper: `m`. It's done this way to make it match easily with any other `MonadIO` instance, rather than using IO directly.
 {% endhint %}
 
+{% code-tabs %}
+{% code-tabs-item title="Fission.Timestamp" %}
 ```haskell
 addM :: MonadIO m => Unstamped r -> m r
 addM record = do
-  now <- liftIO getCurrentTime
+  now <- liftIO getCurrentTime
   return $ add now record
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### Specifically RIO
 
@@ -57,9 +61,11 @@ Let's look at something that uses a concrete wrapping type, in this case `RIO`.
 This example uses `RIO` directly because it's used while setting up the database pool for our ambient config on app startup, and it's more convenient phrased this way for this scenario.
 {% endhint %}
 
+{% code-tabs %}
+{% code-tabs-item title="Fission.Storage.SQLite" %}
 ```haskell
 connPool :: HasLogFunc cfg => DB.Path -> RIO cfg DB.Pool
-connPool (DB.Path {getPath = path}) = do
+connPool (DB.Path {getPath = path}) = do
   logDebug $ "Establishing DB pool for " <> displayShow path
 
   rawPool <- liftIO $ createPool (sqliteOpen path) seldaClose 4 2 10
@@ -67,6 +73,8 @@ connPool (DB.Path {getPath = path}) = do
 
   return $ DB.Pool rawPool
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 The function `createPool :: IO (Pool SeldaConnection)` needs to be brought into `RIO`. Remember that `IO` doesn't export a constructor for us to explicitly destructure and repackage! We need a way to turn `IO a` into `RIO cfg a`.
 
