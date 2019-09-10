@@ -254,7 +254,7 @@ When using do notion, we often replace `pure` with `return`, which is the same f
 {% endhint %}
 
 {% tabs %}
-{% tab title="Manual" %}
+{% tab title="Bind" %}
 ```haskell
 [1,2,3] >>= \a -> 
   pure (a + 1) >>= \b -> 
