@@ -194,7 +194,7 @@ fireTheMissiles
 {% tabs %}
 {% tab title="TypeScript" %}
 ```typescript
-const withInner = (toLog: string): () => {
+const withInner = (toLog: string): void => {
   const innerValue = 'That is the question!'
   console.log(`${toLog}? Or not ${toLog}? ${innerValue}`)
 }
@@ -310,7 +310,7 @@ import * as HL from "./HelperLib";
 import { foo, bar } from "./SomeLib"
 
 const id = a => a
-const swap = [a, b] => [b, a]
+const swap = ([a, b]) => [b, a]
 const hiddenValue = HL.downcase("not exported")
 
 export { 
@@ -459,12 +459,12 @@ data Bike = Bike
 {% tabs %}
 {% tab title="TypeScript \(Direct\)" %}
 ```typescript
-const makeGear = (big, little): GearRatio => { big, little }
+const makeGear = (big, little): GearRatio => ({ big, little })
 
-const makeBike = (big, little, name): Bike => {
+const makeBike = (big, little, name): Bike => ({
   name, 
   gear = makeGear(big, little)
-}
+})
 ```
 {% endtab %}
 
@@ -744,4 +744,3 @@ nextAction =
 ```
 {% endtab %}
 {% endtabs %}
-
