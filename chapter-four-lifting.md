@@ -1,2 +1,2 @@
-# Chapter Four: Lifting
+# Chapter Three: Lifting
 

@@ -1,4 +1,4 @@
-# Chapter Four: Database DSL
+# Chapter Five: Database DSL
 
 ## The Legend of Selda
 
