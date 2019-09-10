@@ -30,7 +30,7 @@ The solution is to `lift` a function through the layers. Take something that wor
 
 ## liftIO
 
-`IO` actions occur frequently. Accessing CLI input, talking to the database, and making a network request are all things that you'll want to do on a regular basis. If the monad that you're working in also has a `MonadIO` instance, you get access to `liftIO`. Fission uses `MonadRIO` very frequently, which inherits from `MonadIO`.
+`IO` actions occur frequently. Accessing CLI input, talking to the database, and making a network request are all things that you'll want to do on a regular basis. If the monad that you're working in also has a `MonadIO` instance, you get access to `liftIO`. Fission uses `MonadRIO` very frequently, which inherits from `MonadIO`. The best way to read `liftIO` is as "turn an `IO` function into one that happens in my current wrapper."
 
 ### An Aside About IO
 
@@ -60,8 +60,7 @@ connPool (DB.Path {getPath = path}) = do
   logDebug $ "DB pool stats: " <> displayShow rawPool
 
   return $ DB.Pool rawPool
-
 ```
 
-The function `createPool :: IO (Pool SeldaConnection)` needs to be brought into RIO. But `IO` doesn't export a constructor for us to destructure! We need a way to turn `IO a` into `RIO cfg a`. That's the `liftIO` instance for `RIO`!
+The function `createPool :: IO (Pool SeldaConnection)` needs to be brought into RIO. But `IO` doesn't export a constructor for us to destructure! We need a way to turn `IO a` into `RIO cfg a`. We can do this manually, but by far the easiest is the `liftIO` instance for `RIO`! It makes `IO` actions compatible with the rest of your `RIO` function.
 
