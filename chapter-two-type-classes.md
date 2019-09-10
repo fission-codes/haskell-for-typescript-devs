@@ -315,3 +315,15 @@ m (a ->   b) <*> m a == m b -- Applicative
 -}
 ```
 
+## The Orphanage
+
+For the compiler to know that there are not duplicate, conflicting instances for type classes, instances need to be written in the same module as the `class` declaration, or in the same module as a datatype definition. But what happens when you need to add an instance from a library to a datatype that's also from a library?
+
+These are called type class "orphans," and we ~~shove~~  isolate them in a module \(or submodules\) called `Fission.Internal.Orphanage`. Importing this module doesn't have any actual exports, but you do need to signal to the compiler that it's a dependency for the module that you're writing. Importing it normally will lead to the linter complaining about an unused import. You can get around this warning by explicitely showiung that are no imports:
+
+```haskell
+import Fission.Internal.Orphanage ()
+```
+
+The downside to having all of your orphan instances in a single module is that it progressivbley slows your compile times down after touching the orphanage because it need to check every module that imports it for new instances. As this file grows, it is typically a good idea to break it into submodules, and only import the orphan modules that you actually need in each scenario.
+

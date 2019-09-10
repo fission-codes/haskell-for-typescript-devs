@@ -8,3 +8,27 @@ Haskell has many database libraries, and there's a recent trend in leveraging th
 We may later switch to [Beam](https://tathougies.github.io/beam/), which is more feature rich, has generally faster compilation, and has a clearer tutorial. We switched to Selda due to a bug in a dependency, which has since been fixed.
 {% endhint %}
 
+The flip side of having so much power in a database library is that the types can get pretty out of hand sometimes. This is a trade-off that we make in a number of places throughout the application, and is highly beneficial 98% of the time. Selda uses a lot of constraint aliases to merge multiple constraints into one. GHC or Intero will give you hints with the underlying constraints. We'll touch of a few things to keep in mind below.
+
+## MonadSelda
+
+{% code-tabs %}
+{% code-tabs-item title="Fission.Storage.Types" %}
+```haskell
+newtype Pool = Pool { getPool :: SeldaPool }
+  deriving Show
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+{% code-tabs %}
+{% code-tabs-item title="Fission.Internal.Orphanage" %}
+```haskell
+instance Has DB.Pool cfg => MonadSelda (RIO cfg) where
+  seldaConnection = do
+    DB.Pool pool <- Config.get
+    liftIO $ withResource pool pure
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
