@@ -28,17 +28,17 @@ Clearly there's a lot of layers that you can think about. If all you care about 
 
 The solution is to `lift` a function through the layers. Take something that works on one layer, and make it work on another. We can do this manually, but for all of the common data types, there are type classes to help us do this in a straightforward way. By far the most common one is `liftIO`.
 
-## liftIO
+{% hint style="info" %}
+Everything in a Haskell application occurs inside the `IO` type, which is where the horrible, unpredictable, tainted imperative world touches your beautiful, pristine functional clockwork.
+
+Haskell doesn't expose the `IO` constructor \(i.e. it's not exported, something you can do in your modules, too\), so we want to avoid touching `IO` directly as much as possible because it's impossible to get fully out of it. At the end of the day your function will get used in a `IO` context \(even if you're several layers down\). Most of the Haskell style is creating clean, pure, high-level DSLs, and calling _those_ inside `IO`.
+{% endhint %}
+
+## MonadIO
 
 `IO` actions occur frequently. Accessing CLI input, talking to the database, and making a network request are all things that you'll want to do on a regular basis. If the monad that you're working in also has a `MonadIO` instance, you get access to `liftIO`. Fission uses `MonadRIO` very frequently, which inherits from `MonadIO`. The best way to read `liftIO` is as "turn an `IO` function into one that happens in my current wrapper."
 
-### An Aside About IO
-
-Everything in a Haskell application occurs inside the `IO` type, which is where the tainted imperative world touches our pristine functional clockwork. We don't have access to the `IO` constructor \(i.e. it's not exported, something you can do in your modules, too\), so we want to avoid touching `IO` directly as much as possible because it's impossible to get fully out of it. At the end of the day your function will get used in a `IO` context \(even if you're several layers down\). Most of the Haskell style is creating clean, pure, high-level DSLs, and calling _those_ inside `IO`.
-
-### Any MonadIO
-
-Let's look at two examples. The first is simply a paramaterized IO-enabled wrapper m. It's done this way to make it match easily with any other MonadIO instance, rather than using IO directly.
+This exampe paramaterized `IO`-enabled wrapper `m`. It's done this way to make it match easily with any other `MonadIO` instance, rather than using IO directly.
 
 ```haskell
 addM :: MonadIO m => Unstamped r -> m r
@@ -49,14 +49,18 @@ addM record = do
 
 ### Specifically RIO
 
-`RIO` stands for "`Reader` + `IO`." Clearly this has a `MonadIO` instance! This example uses `RIO` directly because it's used while setting up the database pool for our ambient config on app startup, and it's more convenient phrased this way for this scenario.
+`RIO` stands for "`Reader` + `IO`." Clearly this has a `MonadIO` instance! 
+
+{% hint style="info" %}
+This example uses `RIO` directly because it's used while setting up the database pool for our ambient config on app startup, and it's more convenient phrased this way for this scenario.
+{% endhint %}
 
 ```haskell
 connPool :: HasLogFunc cfg => DB.Path -> RIO cfg DB.Pool
 connPool (DB.Path {getPath = path}) = do
   logDebug $ "Establishing DB pool for " <> displayShow path
 
-  rawPool <- liftIO $ createPool (sqliteOpen path) seldaClose 4 2 10 -- config these
+  rawPool <- liftIO $ createPool (sqliteOpen path) seldaClose 4 2 10
   logDebug $ "DB pool stats: " <> displayShow rawPool
 
   return $ DB.Pool rawPool
