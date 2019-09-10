@@ -38,7 +38,9 @@ Haskell doesn't expose the `IO` constructor \(i.e. it's not exported, something 
 
 `IO` actions occur frequently. Accessing CLI input, talking to the database, and making a network request are all things that you'll want to do on a regular basis. If the monad that you're working in also has a `MonadIO` instance, you get access to `liftIO`. Fission uses `MonadRIO` very frequently, which inherits from `MonadIO`. The best way to read `liftIO` is as "turn an `IO` function into one that happens in my current wrapper."
 
-This exampe paramaterized `IO`-enabled wrapper `m`. It's done this way to make it match easily with any other `MonadIO` instance, rather than using IO directly.
+{% hint style="info" %}
+This example uses an `IO`-enabled wrapper: `m`. It's done this way to make it match easily with any other `MonadIO` instance, rather than using IO directly.
+{% endhint %}
 
 ```haskell
 addM :: MonadIO m => Unstamped r -> m r
@@ -49,7 +51,7 @@ addM record = do
 
 ### Specifically RIO
 
-`RIO` stands for "`Reader` + `IO`." Clearly this has a `MonadIO` instance! 
+Let's look at something that uses a concrete wrapping type, in this case `RIO`.
 
 {% hint style="info" %}
 This example uses `RIO` directly because it's used while setting up the database pool for our ambient config on app startup, and it's more convenient phrased this way for this scenario.
@@ -66,5 +68,11 @@ connPool (DB.Path {getPath = path}) = do
   return $ DB.Pool rawPool
 ```
 
-The function `createPool :: IO (Pool SeldaConnection)` needs to be brought into `RIO`. Remember that `IO` doesn't export a constructor for us to explicitely destructure and repackage! We need a way to turn `IO a` into `RIO cfg a`. We can always write this function manually, but by far the easiest is the `liftIO` instance for `RIO`. The upshot is that it makes `IO` actions compatible with the rest of your `RIO` function.
+The function `createPool :: IO (Pool SeldaConnection)` needs to be brought into `RIO`. Remember that `IO` doesn't export a constructor for us to explicitly destructure and repackage! We need a way to turn `IO a` into `RIO cfg a`.
+
+{% hint style="success" %}
+`RIO` stands for "`Reader` + `IO`." Clearly this has a `MonadIO` instance! 
+{% endhint %}
+
+ We can always write this function manually, but by far the easiest is the `liftIO` instance for `RIO`. The upshot is that it makes `IO` actions compatible with the rest of your `RIO` function.
 
