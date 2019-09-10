@@ -66,5 +66,5 @@ connPool (DB.Path {getPath = path}) = do
   return $ DB.Pool rawPool
 ```
 
-The function `createPool :: IO (Pool SeldaConnection)` needs to be brought into RIO. But `IO` doesn't export a constructor for us to destructure! We need a way to turn `IO a` into `RIO cfg a`. We can do this manually, but by far the easiest is the `liftIO` instance for `RIO`! It makes `IO` actions compatible with the rest of your `RIO` function.
+The function `createPool :: IO (Pool SeldaConnection)` needs to be brought into `RIO`. Remember that `IO` doesn't export a constructor for us to explicitely destructure and repackage! We need a way to turn `IO a` into `RIO cfg a`. We can always write this function manually, but by far the easiest is the `liftIO` instance for `RIO`. The upshot is that it makes `IO` actions compatible with the rest of your `RIO` function.
 
