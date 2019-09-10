@@ -1,6 +1,6 @@
 # Chapter Four: Lifting
 
-Something that we're going to sidestep almost entirely is a concept called [monad transformers](https://en.wikibooks.org/wiki/Haskell/Monad_transformers). We rarely use them _directly_ in practice, even though they're all through our dependencies. Remember that the purpose of this guide is to give a pragmatic up-and-running style introduction to being productive in Haskell. No one asks how the plumbing inside Rails works, but it's easy to follow along with the high-level concepts.
+Something that we're going to sidestep almost entirely is a concept called [monad transformers](https://en.wikibooks.org/wiki/Haskell/Monad_transformers). We rarely use them _directly_ in practice, even though they're all through our dependencies. Remember that the purpose of this guide is to give a pragmatic up-and-running style introduction to being productive in Haskell. No one asks how the plumbing _inside_ TypeScript promises work, but it's easy to follow along with the high-level syntax and concepts.
 
 ## Levels
 
