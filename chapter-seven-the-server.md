@@ -1,2 +1,2 @@
-# Chapter Seven: The Server
+# Chapter Seven: Composable Servers
 
