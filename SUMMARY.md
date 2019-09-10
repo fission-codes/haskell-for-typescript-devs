@@ -5,5 +5,5 @@
 * [Chapter One: Setup](chapter-one-setup.md)
 * [Chapter Two: Type Classes](chapter-two-type-classes.md)
 * [Chapter Three: Ambient Config](chapter-two-global-config.md)
-* [Chapter Four: Database](chapter-four-database.md)
+* [Chapter Four: Database DSL](chapter-four-database.md)
 
