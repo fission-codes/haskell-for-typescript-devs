@@ -46,7 +46,42 @@ Benchmarks live at `/bench`
 
 If a project contains a single executable, it tends to live in `/app` or `/exe`. Since our project contains multiple executables, we use the name of the executable itself \(for example `/fission-web`\).
 
+## Where to Find Packages
 
+### Stackage
+
+We use [Stackage](https://www.stackage.org/) for nearly all packages. These are stable packages, grouped into "Stack resolver versions", so you don't need to worry about version numbers. Just stick them in your dependencies, and everything just works™.
+
+{% code-tabs %}
+{% code-tabs-item title="package.yaml" %}
+```yaml
+dependencies:
+  - aeson
+  - aeson-casing
+  - base
+  - [...]
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+Searching in Stackage can be done by name, _or by type signature_, which is very useful.
+
+### Hackage
+
+You can find even more packages on [Hackage](http://hackage.haskell.org/). It's a very similar process as with Stackage, but to include packages
+
+{% code-tabs %}
+{% code-tabs-item title="stack.yaml" %}
+```yaml
+extra-deps:
+- alex-3.2.4
+- ekg-wai-0.1.0.3
+- happy-1.19.10
+- servant-multipart-0.11.4
+- tasty-rerun-1.1.14
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
