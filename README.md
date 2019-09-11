@@ -6,7 +6,7 @@ description: >-
 
 # Haskell for TypeScript Developers
 
-## Forward
+## Foreword
 
 > Avoid "success at all costs"  
 > - Motto of the Haskell Core Dev Team
