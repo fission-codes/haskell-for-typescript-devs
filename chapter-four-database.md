@@ -19,6 +19,8 @@ The flip side of having so much power in a database library is that the types ca
 {% code-tabs %}
 {% code-tabs-item title="Fission.Storage.Types" %}
 ```haskell
+type SeldaPool = Database.Pool (SeldaConnection SQLite)
+
 newtype Pool = Pool { getPool :: SeldaPool }
   deriving Show
 ```
@@ -29,9 +31,11 @@ newtype Pool = Pool { getPool :: SeldaPool }
 {% code-tabs-item title="Fission.Internal.Orphanage" %}
 ```haskell
 instance Has DB.Pool cfg => MonadSelda (RIO cfg) where
-  seldaConnection = do
+ type Backend (RIO cfg) = SQLite
+
+ withConnection action = do
     DB.Pool pool <- Config.get
-    liftIO $ withResource pool pure
+    withResource pool action
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

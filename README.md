@@ -8,8 +8,9 @@ description: >-
 
 ## Foreword
 
-> Avoid "success at all costs"  
-> - Motto of the Haskell Core Dev Team
+> Avoid "success at all costs"
+>
+> * Motto of the Haskell Core Dev Team
 
 Haskell was explicitly designed to be an _influential_ language; to get concepts used by other languages. To this end it has been extraordinarily successful. The JavaScript ecosystem has increasingly to borrowed concepts, patterns, and features from the ML-family of languages over the past few years.
 

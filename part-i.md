@@ -152,7 +152,7 @@ double = (*2)
 ```haskell
 (*&) :: Int -> String -> String
 num *& str = show num ++ str
--- NOTE: `show` turns values into strings 
+-- NOTE: `show` turns values into strings
 ```
 {% endtab %}
 {% endtabs %}
@@ -421,7 +421,7 @@ interface Bike {
 class Geared {
   big: number
   little: number
-  
+
   constructor(gbr: number, lgr: number) {
     big = bgr
     little = lgr
@@ -430,7 +430,7 @@ class Geared {
 
 class Bike extends Geared {
   name: string
-  
+
   constructor(bgr: number, lgr: number, bikeName: string) {
     name = bikeName
     super(bgr, lgr)
@@ -445,7 +445,7 @@ data Gear = GearRatio
   { _big    :: Natural
   , _little :: Natural
   }
-  
+
 data Bike = Bike
   { _name :: Text
   , _gear :: Gear
@@ -472,7 +472,7 @@ const makeBike = (big, little, name): Bike => ({
 ```typescript
 /*
   Included in the `class` delcaration. For example:
-  
+
   constructor(bgr: number, lgr: number) {
     big = bgr
     little = lgr
@@ -718,15 +718,15 @@ switch (lightState) {
   case LIGHT.RED:
     nextAction = ACTION.STOP
     break
-    
+
   case LIGHT.YELLOW:
     nextAction = ACTION.SLOW
     break
-    
+
   case LIGHT.GREEN:
     nextAction = ACTION.DRIVE
     break
-    
+
   default:
     nextAction = currentAction
 }
@@ -744,3 +744,4 @@ nextAction =
 ```
 {% endtab %}
 {% endtabs %}
+
