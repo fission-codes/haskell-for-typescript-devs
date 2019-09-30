@@ -204,7 +204,7 @@ const withInner = (toLog: string): void => {
 {% tab title="Haskell \(let...in\)" %}
 ```haskell
 withInner' toLog =
-  let 
+  let
     innerValue = "That is the question!"
     msg = toLog <> "? Or not " <> toLog <> "? " <> innerValue
   in
@@ -251,7 +251,7 @@ result = triple $ prod 1 (double 1) 3
 
 {% tab title="Haskell \(Piped with &\)" %}
 ```haskell
-result = 3 
+result = 3
        & prod 1 (double 1)
        & triple
 ```
@@ -313,9 +313,9 @@ const id = a => a
 const swap = ([a, b]) => [b, a]
 const hiddenValue = HL.downcase("not exported")
 
-export { 
-  id, 
-  swap 
+export {
+  id,
+  swap
 }
 
 export { toReExport } from "./ExternalLib"
@@ -462,7 +462,7 @@ data Bike = Bike
 const makeGear = (big, little): GearRatio => ({ big, little })
 
 const makeBike = (big, little, name): Bike => ({
-  name, 
+  name,
   gear = makeGear(big, little)
 })
 ```
@@ -484,9 +484,9 @@ const makeBike = (big, little, name): Bike => ({
 {% tab title="Haskell" %}
 ```haskell
 {-
-  Constructors are the capitalized word on 
+  Constructors are the capitalized word on
   the right of the `=` in the `data` declaration
-  It auto-generates constructor functions 
+  It auto-generates constructor functions
   with the folling type signatures:
 
   GearRatio :: Natural -> Natural   -> Geared
@@ -529,13 +529,13 @@ myBike = Bike
 {% tab title="Haskell \(Wildcard Style\)" %}
 ```haskell
 myBike :: Bike
-myBike = 
-  let 
+myBike =
+  let
     _big    = 2
     _little = 5
     _name   = "10 Speeder"
     _gear   = GearRatio {..}
-  in 
+  in
     Bike {..}
 ```
 {% endtab %}
@@ -596,8 +596,8 @@ myBike ^. gear . little
 ```typescript
 // Preamble
 
-const myGear = GearRatio 2 5
-const myBike = Bike '10 Speeder' myGear
+const myGear = new GearRatio(2, 5)
+const myBike = new Bike('10 Speeder', myGear)
 
 // Mutable Update
 
@@ -620,7 +620,7 @@ myBike = Bike "10 Speeder" myGear
 
 -- Immutable Update
 
-upgradedBike = myBike 
+upgradedBike = myBike
   { _name = "12 Speeder"
   , _gear = myGear { _littleGear = 6 }
   }
@@ -735,7 +735,7 @@ switch (lightState) {
 
 {% tab title="Haskell" %}
 ```haskell
-nextAction = 
+nextAction =
   case lightState of
     Red    -> Stop
     Yellow -> Slow
