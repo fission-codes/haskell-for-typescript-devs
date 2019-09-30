@@ -596,8 +596,8 @@ myBike ^. gear . little
 ```typescript
 // Preamble
 
-const myGear = GearRatio 2 5
-const myBike = Bike '10 Speeder' myGear
+const myGear = new GearRatio(2, 5)
+const myBike = new Bike('10 Speeder', myGear)
 
 // Mutable Update
 
