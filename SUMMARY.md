@@ -9,4 +9,5 @@
 * [Chapter Five: Error Handling](chapter-five-error-handling.md)
 * [Chapter Six: Database DSL](chapter-four-database.md)
 * [Chapter Seven: Web API](chapter-five-web-api-dsl.md)
+* [Appendix T](appendix-t.md)
 
