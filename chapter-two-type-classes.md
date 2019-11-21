@@ -57,9 +57,6 @@ instance Semigroup [a] where
   
 instance Semigroup Text where
   a <> b = append a b
-  
-intance Semigroup (-> a) where
-  f <> g = f . g
 ```
 
 Finally, let's use it in a function. We place "class constraints" before the arguments in the type signature, separated by a `=>`.

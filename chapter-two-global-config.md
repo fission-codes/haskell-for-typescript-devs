@@ -12,8 +12,7 @@ This is a standard pattern known as a `Reader`. It's so common that the Haskell 
 
 The first part of this is to create a data structure that will contain our global context. Many people call this `Env`, but that can conflict with standard terminology for environment variables, which environment an application is running in \(test, development, staging, production\), and so on. We have opted to call this `Config`.
 
-{% code-tabs %}
-{% code-tabs-item title="Fission.Config.Types" %}
+{% code title="Fission.Config.Types" %}
 ```haskell
 data Config = Config 
   { _logFunc :: !LogFunc
@@ -25,8 +24,7 @@ data Config = Config
   
   makeLenses ''Config
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 {% hint style="info" %}
 We may move to [SuperRecord](https://www.athiemann.net/2017/07/02/superrecord.html) in the future, for _even less_ boilerplate plus some nifty additional super powers [🦸](https://emojipedia.org/superhero/)
@@ -83,19 +81,16 @@ Unlike the first example, the constraint has no space after the `Has`. This is b
 
 You are likely to want to add custom fields to the `Config` record. The first step is to ensure that the type is unique to the application, wrapping common types in `newtype`:
 
-{% code-tabs %}
-{% code-tabs-item title="Fission.Web.Types" %}
+{% code title="Fission.Web.Types" %}
 ```haskell
 newtype Port = Port { getPort :: Int }
   deriving Show
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 Next, add it to the `Config` itself:
 
-{% code-tabs %}
-{% code-tabs-item title="Fission.Config.Types" %}
+{% code title="Fission.Config.Types" %}
 ```haskell
 data Config = Config 
   { _logFunc :: !LogFunc
@@ -107,8 +102,7 @@ data Config = Config
   
 makeLenses ''Config
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endcode %}
 
 {% hint style="success" %}
 Because of the `makeLenses` declaration, you automagically get a lens \(superpowered accessor\) for the new field called `port`
