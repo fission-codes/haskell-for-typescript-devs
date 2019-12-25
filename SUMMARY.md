@@ -9,6 +9,7 @@
 * [Chapter Five: Error Handling](chapter-five-error-handling.md)
 * [Chapter Six: Database DSL](chapter-four-database.md)
 * [Chapter Seven: Web API](chapter-five-web-api-dsl.md)
-* [Appendix T](appendix-t.md)
-* [Appendix II: Fisson Style Guide](appendix-ii-company-style-guide.md)
+* [Appendix I: FAQ](appendix-i-faq.md)
+* [Appendix II: Optics](appendix-t.md)
+* [Appendix III: Fission Style Guide](appendix-ii-company-style-guide.md)
 

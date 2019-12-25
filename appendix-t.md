@@ -1,38 +1,8 @@
 ---
-description: Haskell Tips & Tricks
+description: Common Lens Legend
 ---
 
-# Appendix T
-
-## How do I change my REPL prompt?
-
-Here's a simple one liner to set your prompt:
-
-`:set prompt "λ> "`
-
-To set it permanently, look at the config file in `~/.ghci`. Here's an example custom prompt:
-
-```text
-:set prompt "\ESC[1;34m\n\ESC[0;34mλ> \ESC[m"
--- :seti -XNoImplicitPrelude
-:seti -XOverloadedStrings
-:seti -XScopedTypeVariables
-
-:set -Wall
-:set -fno-warn-type-defaults
-:set -package pretty-show
-
-import Text.Show.Pretty (pPrint)
-:set -interactive-print pPrint
-:set +s
-:set +t
-
-:def rt const $ return $ unlines [":r", ":main --rerun-update"]
-:def rtfe const $ return $ unlines [":r", ":main --rerun-update --rerun-filter failures,exceptions"]
-:def rtn const $ return $ unlines [":r", ":main --rerun-update --rerun-filter new"]
-```
-
-## Common Lens Legend
+# Appendix II: Optics
 
 My guess is that you're seeing lenses and going "what are all these funky looking operators? 😱" In short, they're getters and setters that let you work on nested data, enums, `Maybe`s, and so on. They compose nicely, so you can all kinds of mutable-feeling updates in a totally controlled way.
 
@@ -175,10 +145,6 @@ wearDown Good = Fair
 wearDown Fair = Bad
 wearDown Bad  = Bad
 ```
-
-## More tips go here
-
-This would be another tip.
 
 
 
