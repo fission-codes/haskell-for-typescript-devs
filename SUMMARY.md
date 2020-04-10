@@ -16,4 +16,7 @@
 * [Appendix II: Optics](appendix/optics.md)
 * [Appendix III: Fission Style Guide](appendix/fission-style-guide.md)
 * [Haskell Wizards](appendix/haskell-wizards.md)
+* [Fission - Web native file system, app & web hosting](https://fission.codes)
+* [Fission Web API in Haskell](https://github.com/fission-suite/fission)
+* [IPFS on Hackage](https://hackage.haskell.org/package/ipfs)
 
