@@ -107,7 +107,7 @@ makeLenses ''Config
 {% hint style="success" %}
 Because of the `makeLenses` declaration, you automagically get a lens \(superpowered accessor\) for the new field called `port`
 
-`Unsure of what lenses are? check out our`[`Common Lens Legend`](appendix-t.md)\`\`
+`Unsure of what lenses are? check out our`[`Common Lens Legend`](appendix/optics.md)\`\`
 {% endhint %}
 
 Finally, write a [`Has` instance](https://www.stackage.org/haddock/lts-14.5/data-has-0.3.0.0/Data-Has.html):

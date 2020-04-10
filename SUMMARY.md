@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Haskell for TypeScript Developers](README.md)
-* [Syntatic Cheat Sheet](part-i.md)
+* [Syntactic Cheat Sheet](part-i.md)
 * [Chapter One: Setup](chapter-one-setup.md)
 * [Chapter Two: Type Classes](chapter-two-type-classes.md)
 * [Chapter Three: Ambient Config](chapter-two-global-config.md)
@@ -9,7 +9,11 @@
 * [Chapter Five: Error Handling](chapter-five-error-handling.md)
 * [Chapter Six: Database DSL](chapter-four-database.md)
 * [Chapter Seven: Web API](chapter-five-web-api-dsl.md)
-* [Appendix I: FAQ](appendix-i-faq.md)
-* [Appendix II: Optics](appendix-t.md)
-* [Appendix III: Fission Style Guide](appendix-ii-company-style-guide.md)
+
+## Appendix
+
+* [Appendix I: FAQ](appendix/faq.md)
+* [Appendix II: Optics](appendix/optics.md)
+* [Appendix III: Fission Style Guide](appendix/fission-style-guide.md)
+* [Haskell Wizards](appendix/haskell-wizards.md)
 

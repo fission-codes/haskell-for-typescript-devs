@@ -2,7 +2,7 @@
 description: Translating from TypeScript to Haskell
 ---
 
-# Syntatic Cheat Sheet
+# Syntactic Cheat Sheet
 
 ## Basics
 
