@@ -18,7 +18,7 @@ Artwork created by [Bruno Monts](https://www.behance.net/brunomonts), a Brazilli
 
 ### Haskell Wizard
 
-![](../.gitbook/assets/02_haskell_wizard.png)
+![](../.gitbook/assets/02_haskell_wizard-1080h.png)
 
 The Haskell Wizard is part magic, part science. They're confident and proficient, using both tech tools and the magic of type theory, a scientist's lab coat, and a wizard hat, to tackle any software design challenge.
 
